@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Instagram Profesional - Parte 1: Configuración Inicial</title>
+    <style>
+        :root {
+            --primary: #8A2BE2;
+            --secondary: #FF6B8B;
+            --accent: #00CED1;
+            --light: #F8F7FF;
+            --dark: #2D3047;
+            --success: #4ECDC4;
+            --warning: #FFD166;
+            --danger: #FF6B6B;
+            --gray: #6C757D;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        
+        .part-indicator {
+            background-color: rgba(255,255,255,0.25);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 25px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        h2 i {
+            margin-right: 12px;
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 25px 0 15px;
+            font-weight: 600;
+            border-left: 3px solid var(--secondary);
+            padding-left: 12px;
+        }
+        
+        p {
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 5px;
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, #E8F4F8, #D4EDF9);
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #FFF3E0, #FFECB3);
+            border-left: 5px solid var(--warning);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .error-box {
+            background: linear-gradient(135deg, #FFEBEE, #FFCDD2);
+            border-left: 5px solid var(--danger);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+            border-left: 5px solid var(--success);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(138, 43, 226, 0.3);
+        }
+        
+        .checklist {
+            list-style-type: none;
+            margin-left: 0;
+        }
+        
+        .checklist li {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.3rem;
+            background: rgba(78, 205, 196, 0.1);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            border-left: none;
+            padding-left: 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+            color: var(--dark);
+            border-top: 1px solid rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.7);
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+            position: relative;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .progress-container:before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            z-index: 1;
+            border-radius: 3px;
+        }
+        
+        .progress-step {
+            background-color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 4px solid white;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .progress-step.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .progress-step.completed {
+            background: var(--success);
+            color: white;
+        }
+        
+        .example-box {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .glossary {
+            background: linear-gradient(135deg, #8A2BE2, #FF6B8B);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+        }
+        
+        .glossary h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .glossary-term {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .glossary-term h3 {
+            color: white;
+            border-left: none;
+            padding-left: 0;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+        
+        .glossary-term p {
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .progress-container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 25px;
+                max-width: 100%;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .glossary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Guía para Instagram Profesional</h1>
+            <p class="subtitle">Domina la creación y configuración de una cuenta de Instagram para impulsar tu emprendimiento</p>
+            <div class="part-indicator">Parte 1: Configuración Inicial</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress-step active">1</div>
+            <div class="progress-step">2</div>
+            <div class="progress-step">3</div>
+        </div>
+        
+        <div class="section">
+            <h2>Introducción</h2>
+            <p>Una cuenta de Instagram bien configurada es el punto de partida esencial para cualquier emprendimiento exitoso en la era digital. En esta primera parte, nos enfocaremos en establecer bases sólidas, desde la creación estratégica de la cuenta hasta tener todo listo para comenzar a publicar contenido de valor.</p>
+            <p>Invertir tiempo en esta fase inicial no solo evitará problemas futuros, sino que sentará las bases para un crecimiento orgánico, sostenido y con propósito.</p>
+            
+            <div class="tip-box">
+                <strong>💡 Recomendación:</strong> Te sugerimos completar todos los pasos en una sola sesión para mantener coherencia en tu configuración y asegurar una identidad visual unificada desde el primer momento.
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="step-number">1</span> Planificación Estratégica Inicial</h2>
+            <p>Antes de tocar cualquier configuración, es fundamental definir los pilares que guiarán toda tu estrategia en Instagram. Esta planificación marcará la diferencia entre una cuenta con propósito y una más del montón.</p>
+            
+            <h3>Definir objetivos claros</h3>
+            <ul>
+                <li>¿Qué resultados concretos buscas obtener? (ventas directas, generar leads cualificados, construir comunidad, aumentar reconocimiento de marca)</li>
+                <li>¿A qué audiencia específica quieres impactar? (detalla edad, intereses, ubicación, comportamientos de consumo)</li>
+                <li>¿Qué te hace único frente a la competencia? (identifica y potencia tu propuesta de valor diferenciadora)</li>
+            </ul>
+            
+            <h3>Investigación de competencia</h3>
+            <p>Analiza estratégicamente 3-5 cuentas de competidores directos e indirectos:</p>
+            <ul>
+                <li>¿Qué tipos de contenido generan más engagement?</li>
+                <li>¿Cómo construyen relación con su comunidad?</li>
+                <li>¿Qué estrategias de hashtags implementan?</li>
+                <li>¿En qué horarios y días publican con mayor efectividad?</li>
+            </ul>
+            
+            <div class="tip-box">
+                <strong>📝 Consejo práctico:</strong> Crea un documento estratégico con todos estos insights. Puedes usar herramientas gratuitas como Google Docs, Notion o incluso un cuaderno dedicado exclusivamente a tu plan de Instagram.
+            </div>
+            
+            <div class="warning-box">
+                <strong>⚠️ Error común:</strong> Crear la cuenta sin planificación previa, lo que inevitablemente lleva a contenido inconsistente, sin dirección clara y resultados mediocres.
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="step-number">2</span> Creación y Configuración de la Cuenta</h2>
+            <p>La primera impresión es crucial en el mundo digital. Una cuenta bien configurada genera confianza inmediata, profesionalismo y curiosidad por conocer más.</p>
+            
+            <h3>Elección del nombre de usuario (@usuario)</h3>
+            <ul>
+                <li>Prioriza nombres fáciles de recordar, escribir y pronunciar</li>
+                <li>Idealmente relacionado con el nombre de tu emprendimiento</li>
+                <li>Evita números consecutivos, guiones bajos excesivos o caracteres especiales complicados</li>
+                <li>Verifica disponibilidad coherente en otras redes sociales</li>
+            </ul>
+            
+            <div class="example-box">
+                <div class="example-title">✨ Ejemplos inspiradores:</div>
+                <p><strong>Efectivo:</strong> @deliciasnaturales, @techsolutionsarg, @creacionesmanuel</p>
+                <p><strong>Poco recomendable:</strong> @delicias_naturales_2023, @xXtechSolutionsXx, @manu_crea_885</p>
+            </div>
+            
+            <h3>Foto de perfil</h3>
+            <ul>
+                <li>Logo de tu emprendimiento o imagen altamente reconocible</li>
+                <li>Calidad profesional que se mantenga nítida incluso en tamaño miniatura</li>
+                <li>Formato circular - diseña específicamente para este formato</li>
+                <li>Fondo simple que genere contraste y destaque tu elemento principal</li>
+            </ul>
+            
+            <h3>Biografía (Bio)</h3>
+            <p>Aprovecha al máximo los 150 caracteres para comunicar con precisión:</p>
+            <ul>
+                <li>Qué haces/ofreces (tu propuesta central)</li>
+                <li>A quién ayudas/sirves (tu audiencia ideal)</li>
+                <li>Un llamado a la acción claro (CTA persuasivo)</li>
+                <li>Enlace estratégico (tu único enlace clickeable)</li>
+            </ul>
+            
+            <div class="example-box">
+                <div class="example-title">🎯 Ejemplo de bio efectiva:</div>
+                <p>"🍪 Galletas artesanales personalizadas | 🎉 Para tus eventos especiales | 📍Envíos a CABA y GBA | ⬇️ Pedí tu presupuesto"</p>
+            </div>
+            
+            <div class="tip-box">
+                <strong>🎨 Consejo de diseño:</strong> Utiliza emojis relevantes para romper visualmente el texto y hacerlo más escaneable, pero mantén la elegancia - máximo 3-4 emojis estratégicamente ubicados.
+            </div>
+            
+            <div class="error-box">
+                <strong>❌ Error a evitar:</strong> Biografía genérica que no comunica claramente el valor único de tu emprendimiento. Ejemplo a evitar: "Emprendimiento de productos naturales" - es demasiado vago y no genera interés.
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="step-number">3</span> Conversión a Cuenta Profesional</h2>
+            <p>Una cuenta personal tiene limitaciones significativas para emprendimientos. La conversión a cuenta profesional no es opcional - es esencial para competir seriamente.</p>
+            
+            <h3>Beneficios clave de una cuenta profesional</h3>
+            <ul>
+                <li>Acceso a estadísticas detalladas (Instagram Insights)</li>
+                <li>Capacidad de crear y gestionar anuncios segmentados</li>
+                <li>Botones de contacto directo (email, teléfono, dirección física)</li>
+                <li>Categorización específica por industria o nicho</li>
+                <li>Credibilidad aumentada frente a seguidores potenciales</li>
+            </ul>
+            
+            <h3>Pasos para convertir tu cuenta</h3>
+            <ol>
+                <li>Accede a tu perfil y toca el ícono de menú (tres líneas) en la esquina superior derecha</li>
+                <li>Selecciona "Configuración y privacidad"</li>
+                <li>Desplázate hasta "Cuenta"</li>
+                <li>Selecciona "Cambiar a cuenta profesional"</li>
+                <li>Elige entre "Creador" o "Negocio" (recomendamos Negocio para emprendimientos)</li>
+                <li>Selecciona la categoría que mejor describa tu actividad</li>
+                <li>Completa tu información de contacto (opcional pero altamente recomendado)</li>
+            </ol>
+            
+            <div class="tip-box">
+                <strong>💰 Información importante:</strong> La conversión a cuenta profesional es completamente gratuita. No confundir con Instagram Shopping, que requiere configuración adicional y verificación.
+            </div>
+            
+            <div class="warning-box">
+                <strong>🔍 Consideración sobre privacidad:</strong> Al convertirte a cuenta profesional, Instagram recopila más datos sobre tu actividad, pero esto se traduce en insights más valiosos sobre tu audiencia y desempeño.
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="step-number">4</span> Configuración de Información de Contacto</h2>
+            <p>Facilitar el contacto es el puente entre un seguidor curioso y un cliente potencial. Cada detalle cuenta.</p>
+            
+            <h3>Botones de acción directa</h3>
+            <ul>
+                <li><strong>Email:</strong> Utiliza un correo profesional vinculado a tu emprendimiento</li>
+                <li><strong>Teléfono:</strong> Incluye un número de contacto, idealmente WhatsApp Business</li>
+                <li><strong>Dirección:</strong> Si tienes ubicación física o zona de cobertura definida</li>
+            </ul>
+            
+            <h3>Estrategia del enlace en biografía</h3>
+            <p>Al tener un solo enlace clickeable, tu elección debe ser estratégica:</p>
+            <ul>
+                <li>Enlace directo a tu sitio web principal</li>
+                <li>Landing page específica para una campaña</li>
+                <li>Servicios de enlaces múltiples como Linktree o Bio.site</li>
+            </ul>
+            
+            <div class="tip-box">
+                <strong>📊 Consejo analítico:</strong> Implementa un acortador de URLs como Bitly para rastrear clicks y entender qué contenido genera más interés. Estos datos son oro puro para optimizar tu estrategia.
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">🛠️ Herramientas gratuitas para enlaces múltiples:</div>
+                <ul>
+                    <li><strong>Linktree:</strong> Hasta 5 enlaces en su versión gratuita</li>
+                    <li><strong>Bio.site:</strong> Alternativa elegante y minimalista</li>
+                    <li><strong>Beacons.ai:</strong> Incluye analytics básicos y diseño personalizable</li>
+                    <li><strong>Carrd:</strong> Para crear mini-sitios de una sola página</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="step-number">5</span> Configuración de Historias Destacadas</h2>
+            <p>Las historias destacadas son tu "escaparate digital" permanente - cuidan tu primera impresión y guían a nuevos seguidores.</p>
+            
+            <h3>Planificación estratégica de categorías</h3>
+            <p>Organiza tus destacados por temas coherentes:</p>
+            <ul>
+                <li><strong>Productos/Servicios:</strong> Catálogo visual de tu oferta</li>
+                <li><strong>Testimonios:</strong> Social proof de clientes satisfechos</li>
+                <li><strong>Detrás de escena:</strong> Humaniza mostrando procesos o equipo</li>
+                <li><strong>Preguntas frecuentes:</strong> Resuelve objeciones comunes</li>
+                <li><strong>Promociones:</strong> Destaca ofertas actuales o próximas</li>
+            </ul>
+            
+            <h3>Coherencia visual en el diseño</h3>
+            <ul>
+                <li>Desarrolla portadas con diseño consistente para cada categoría</li>
+                <li>Mantén colores alineados con tu identidad visual</li>
+                <li>Incluye iconos o texto claro que identifique inmediatamente cada sección</li>
+            </ul>
+            
+            <div class="tip-box">
+                <strong>🎨 Herramienta de diseño:</strong> Canva ofrece plantillas gratuitas específicas para crear portadas atractivas. Aprovecha sus funcionalidades para mantener coherencia con tu branding.
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">🏪 Ejemplos de organización por rubro:</div>
+                <p><strong>Tienda de ropa:</strong> "Nueva Colección", "Clientes Felices", "Guía de Talles", "Preguntas Frecuentes", "Ofertas Especiales"</p>
+                <p><strong>Servicio de catering:</strong> "Menús Destacados", "Eventos Realizados", "Testimonios", "Cómo Reservar", "Contacto"</p>
+                <p><strong>Consultoría:</strong> "Servicios", "Casos de Éxito", "Sobre Mí", "Recursos Gratuitos", "Agendar Llamada"</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="step-number">6</span> Checklist de Configuración Final</h2>
+            <p>Antes de comenzar tu estrategia de contenido, realiza esta verificación exhaustiva para asegurar que todo esté optimizado.</p>
+            
+            <ul class="checklist">
+                <li>Nombre de usuario coherente y memorable</li>
+                <li>Foto de perfil de alta calidad y representativa</li>
+                <li>Biografía completa con CTA claro y enlace estratégico</li>
+                <li>Cuenta convertida exitosamente a perfil profesional</li>
+                <li>Categoría específica y adecuada seleccionada</li>
+                <li>Información de contacto completa y verificada</li>
+                <li>Historias destacadas organizadas con diseño coherente</li>
+                <li>Configuración de privacidad revisada (cuenta pública)</li>
+                <li>Notificaciones configuradas para no perder interacciones valiosas</li>
+                <li>Usuario y contraseña guardados de forma segura</li>
+            </ul>
+            
+            <div class="success-box">
+                <strong>🎉 ¡Configuración completada exitosamente!</strong> Una vez verificado este checklist, tu cuenta está optimizada y lista para comenzar a publicar contenido de valor. En la siguiente parte de esta guía, profundizaremos en la creación de una estrategia de contenido efectiva y persuasiva.
+            </div>
+        </div>
+        
+        <div class="section" style="text-align: center;">
+            <h2>🚀 Próximos Pasos</h2>
+            <p>En la <strong>Parte 2</strong> de esta guía integral, abordaremos la estrategia de contenido, planificación editorial avanzada y creación de publicaciones que generen engagement real.</p>
+            <p><strong>Temas que exploraremos:</strong> Tipos de contenido estratégico, calendario editorial, herramientas de diseño profesional, y técnicas probadas para crear publicaciones que convierten seguidores en clientes.</p>
+        </div>
+
+        <!-- GLOSARIO -->
+        <div class="glossary">
+            <h2>📚 Glosario de Términos de Marketing</h2>
+            <div class="glossary-grid">
+                <div class="glossary-term">
+                    <h3>Landing Page</h3>
+                    <p>Página web diseñada específicamente para convertir visitantes en leads o clientes. Suele tener un único objetivo claro como suscripciones, descargas o compras.</p>
+                </div>
+                <div class="glossary-term">
+                    <h3>Engagement</h3>
+                    <p>Nivel de interacción y compromiso que tu audiencia tiene con tu contenido. Incluye likes, comentarios, compartidos y guardados.</p>
+                </div>
+                <div class="glossary-term">
+                    <h3>Branding</h3>
+                    <p>Proceso de construcción de una marca, incluyendo su identidad visual, valores, personalidad y cómo es percibida por el público.</p>
+                </div>
+                <div class="glossary-term">
+                    <h3>CTA (Call To Action)</h3>
+                    <p>Llamado a la acción. Elemento que invita al usuario a realizar una acción específica como "Comprar ahora", "Suscribirse" o "Descargar".</p>
+                </div>
+                <div class="glossary-term">
+                    <h3>Insights</h3>
+                    <p>Datos y estadísticas que proporciona Instagram sobre el rendimiento de tu cuenta, audiencia y publicaciones.</p>
+                </div>
+                <div class="glossary-term">
+                    <h3>Lead</h3>
+                    <p>Persona que ha mostrado interés en tu producto o servicio y ha proporcionado sus datos de contacto para futuras comunicaciones.</p>
+                </div>
+                <div class="glossary-term">
+                    <h3>Social Proof</h3>
+                    <p>Fenómeno psicológico donde las personas copian las acciones de otros. En marketing, se refiere a testimonios, reseñas y casos de éxito.</p>
+                </div>
+                <div class="glossary-term">
+                    <h3>Target Audience</h3>
+                    <p>Público objetivo o grupo demográfico específico al que diriges tus esfuerzos de marketing y tu producto o servicio.</p>
+                </div>
+                <div class="glossary-term">
+                    <h3>Content Strategy</h3>
+                    <p>Planificación detallada de qué contenido crear, para quién, cuándo publicarlo y en qué canales distribuirlo.</p>
+                </div>
+                <div class="glossary-term">
+                    <h3>Analytics</h3>
+                    <p>Análisis de datos para medir el rendimiento de tus acciones de marketing y tomar decisiones basadas en información real.</p>
+                </div>
+                <div class="glossary-term">
+                    <h3>Hashtag</h3>
+                    <p>Palabra o frase precedida por el símbolo # que se utiliza en redes sociales para categorizar contenido y hacerlo más descubrible.</p>
+                </div>
+                <div class="glossary-term">
+                    <h3>Feed</h3>
+                    <p>Página principal de Instagram donde se muestran las publicaciones de las cuentas que sigues en orden cronológico.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Guía para emprendedores - Configuración inicial de Instagram profesional</p>
+            <p>Diseñado con 💜 para emprendedores creativos</p>
+        </div>
+    </footer>
+</body>
+</html>
